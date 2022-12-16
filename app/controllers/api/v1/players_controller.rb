@@ -3,12 +3,12 @@ class Api::V1::PlayersController < ApplicationController
 
   def index
     players = Player.all
-    render json: players.to_json(only: %i[id name team number position]), status: 200
+    render json: players.to_json(only: %i[id name team number position images_url]), status: 200
   end
 
   def show
     if @player
-      render json: @player.to_json(only: %i[id name team number position]), status: 200
+      render json: @player.to_json(only: %i[id name team number position images_url]), status: 200
     else
       render json: { status: 404, message: 'player not found' }, satus: 404
     end
@@ -47,7 +47,7 @@ class Api::V1::PlayersController < ApplicationController
   private
 
   def player_params
-    params.require(:character).permit(:name, :team, :number, :position)
+    params.require(:player).permit(:name, :team, :number, :position, :images_url)
   end
 
   def set_player

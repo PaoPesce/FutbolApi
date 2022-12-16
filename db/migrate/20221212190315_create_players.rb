@@ -5,7 +5,7 @@ class CreatePlayers < ActiveRecord::Migration[7.0]
       t.string :team
       t.integer :number
       t.string :position
-
+      t.string :images_url
       t.timestamps
     end
   end
